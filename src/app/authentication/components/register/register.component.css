@@ -1,0 +1,17 @@
+#register-btn {
+    background-color: #FEFFDE;
+    transition: all 0.3s ease-in-out;
+}
+
+#register-btn:hover {
+    background-color: #91C788;
+}
+
+#login-link {
+    color: #FEFFDE;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#login-link:hover {
+    opacity: 0.25;
+}
