@@ -1,0 +1,19 @@
+.root {
+    height: 91%;
+    margin: 0;
+    padding: 0;
+}
+
+.form-container {
+    height: 70%;
+    width: 45%;
+    background-color: #52734D;
+    /* padding: 15px; */
+}
+
+/* 
+.bg-green {
+    background-color: #91C788 !important;
+}
+input tag bg color needs to be changed
+*/
