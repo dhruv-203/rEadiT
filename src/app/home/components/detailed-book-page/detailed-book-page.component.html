@@ -1,0 +1,90 @@
+<app-loader *ngIf="loader"></app-loader>
+<div *ngIf="!loader" class="root">
+    <app-header></app-header>
+    <div class="detailsContainer d-flex flex-wrap container p-3 mt-3 rounded-4 bg-light">
+        <div class="coverContainer d-flex justify-content-center d-lg-block p-3 col-12 col-lg-4">
+            <img src={{data.cover.large}} class="img-fluid rounded-top p-3" alt="">
+        </div>
+        <div class="textualData p-3 col-12 col-lg-8">
+            <div class="part-a">
+                <div class="title fs-1 pt-3 fw-bold ">
+                    {{data.title}}
+                </div>
+                <div class="text-dark fw-medium fs-4 text-wrap"><span class="text-muted">by </span> <span
+                        *ngFor="let author of data.authors">{{author.name}}, </span>
+                </div>
+                <div class="description lead fs-5 pt-3 text-wrap text-truncate fw-normal">{{data.description}}</div>
+            </div>
+            <hr>
+            <div class="part-b container d-flex flex-wrap justify-content-around my-4">
+                <div class="tablets rounded-3" *ngIf="data.publish_date">
+                    <div class="tablet-title text-secondary fs-5">Publish Date</div>
+                    <div class="tablet-value fs-4">{{data.publish_date}}</div>
+                </div>
+                <div class="tablets rounded-3" *ngIf="data.number_of_pages">
+                    <div class="tablet-title text-secondary fs-5">Pages</div>
+                    <div class="tablet-value fs-4">{{data.number_of_pages}}</div>
+                </div>
+            </div>
+            <hr>
+            <div class="peoples d-flex flex-column align-items-center" *ngIf="data.subject_people as subjectPeople">
+                <div class="peopleTitle d-flex justify-content-start mb-5"><span
+                        class="w-100 text-center position-relative fs-4">People</span></div>
+                <div class="peopleValues d-flex gap-3 flex-wrap align-items-center justify-content-around">
+                    <div class="tablets rounded-3" *ngFor="let people of subjectPeople">
+                        <div class="tablet-value fs-5">{{people.name}}</div>
+                    </div>
+                </div>
+            </div>
+            <hr *ngIf="data.subject_people" />
+            <div class="peoples d-flex flex-column align-items-center" *ngIf="data.subjects as subjects">
+                <div class="subjectsTitle d-flex justify-content-start mb-5"><span
+                        class="w-100 text-center position-relative fs-4">Categories</span></div>
+                <div class="peopleValues d-flex gap-3 flex-wrap align-items-center justify-content-around">
+                    <div class="tablets rounded-3" *ngFor="let subject of subjects">
+                        <div class="tablet-value fs-5">{{subject.name}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="w-100">
+        <div class="loginToReviewSection col-12 d-flex flex-column p-4 mt-3 justify-content-center align-items-center"
+            *ngIf="!isAuthenticated">
+            <span class="fs-4 p-2">Please Login or Register to Review and See other Reviews</span>
+            <p><a routerLink="/auth/login" class="link-primary fs-4"><span class="fs-3">+</span> Click here to Login</a>
+            </p>
+        </div>
+        <div class="reviewSection container" *ngIf="isAuthenticated">
+            <div class="reviewFormContainer d-flex flex-column gap-4 align-items-center container">
+                <div class="form-floating w-75">
+                    <textarea class="form-control fs-5" placeholder="Leave a comment here" [(ngModel)]="review"
+                        id="floatingTextarea2" style="height: 150px"></textarea>
+                    <label for="floatingTextarea2" class="fs-5">Write a Review</label>
+                </div>
+                <button type="button" class="btn btn-outline-success " (click)="SubmitReview()" id="submitReview">
+                    Submit
+                </button>
+            </div>
+            <hr>
+            <div class="fs-3 fw-bold w-100 d-flex justify-content-center mb-5" id="reviewsTitle"><span
+                    class="text-center position-relative">Reviews</span></div>
+            <div class="reviewsContainer  d-flex flex-wrap gap-2 align-items-center justify-content-around"
+                *ngIf="isAuthenticated">
+                <div class="card" *ngFor="let review of userData|async">
+                    <div class="card-header px-5">
+                        {{review.user.email}}
+                    </div>
+                    <div class="card-body px-5 ">
+                        <blockquote class="blockquote mb-0">
+                            <p>{{review.data}}</p>
+                            <footer class="blockquote-footer"><cite
+                                    title="Source Title">{{review.user.displayName}}</cite>
+                            </footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

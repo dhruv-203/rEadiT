@@ -1,21 +1,32 @@
-<form method="post" class="h-100 d-flex flex-column justify-content-center align-items-center gap-4">
-    <div class="form-floating mb-3 col-10">
-        <input type="email" class="form-control bg-green" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email address</label>
+<div class="d-flex flex-column justify-content-between position-relative  gap-3  p-sm-1 p-md-4">
+    <div *ngIf="!isClosed" class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{state.data}}
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeAlert()"></button>
     </div>
-    <div class="form-floating col-10">
-        <input type="password" class="form-control bg-green" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label>
+    <div class="display-4 w-100 text-center p-2 fw-bold" id="loginTitle">
+        Login Here
     </div>
+    <form method="post" class="h-100 d-flex flex-column justify-content-center align-items-center gap-4">
+        <div class="form-floating mb-3 col-10">
+            <input type="email" class="form-control bg-green" id="floatingInput" name="email" [(ngModel)]="email"
+                placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating col-10">
+            <input type="password" class="form-control bg-green" id="floatingPassword" name="password"
+                [(ngModel)]="password" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+        </div>
 
-    <div class="row col-10 justify-content-between align-items-center">
-        <div class="col-4">
-            <button type="submit" class="btn btn-outline-success" id="login-btn">Sign in</button>
+        <div class="d-flex flex-wrap col-10 justify-content-center align-items-center">
+            <div>
+                <button type="submit" class="btn btn-outline-success" (click)="login()" id="login-btn">Sign in</button>
+            </div>
+            <div class=" text-light">
+                <p>Don't Have Account?<a class="link-opacity-25-hover" id="register-link" routerLink="../register">Click
+                        Here</a>
+                </p>
+            </div>
         </div>
-        <div class="col-8 text-light">
-            <p>Don't Have Account?<a class="link-opacity-25-hover" id="register-link" routerLink="../register">Click
-                    Here</a>
-            </p>
-        </div>
-    </div>
-</form>
+    </form>
+</div>
