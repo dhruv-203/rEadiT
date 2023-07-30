@@ -18,3 +18,37 @@
     background-color: #91C788;
     /* color: black; */
 }
+
+#signin {
+    background-color: #91C788;
+    color: #FEFFDE;
+    transition: "background-color" 0.2s, "color" 0.2s;
+}
+
+#signin:hover {
+    background-color: #FEFFDE;
+    color: #91C788;
+}
+
+#signup {
+    background-color: #91C788;
+    color: #FEFFDE;
+    transition: "background-color" 0.2s, "color" 0.2s;
+}
+
+#signup:hover {
+    background-color: #FEFFDE;
+    color: #91C788;
+}
+#logout{
+    background-color: #91C788;
+    color: #FEFFDE;
+    transition: "background-color" 0.2s, "color" 0.2s;
+}
+#logout:hover {
+    background-color: #FEFFDE;
+    color: #91C788;
+}
+#Welcome{
+    color:#FEFFDE;
+}

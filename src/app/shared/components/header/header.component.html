@@ -1,9 +1,40 @@
-<nav class="navbar" id="navbar">
+<nav class="navbar  navbar-expand-lg" id="navbar">
     <div class="container-fluid">
-        <a class="navbar-brand" id="navbar-brand" routerLink="">rEad iT</a>
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" id="navbar-search" type="submit">Search</button>
-        </form>
+        <a class="navbar-brand px-3" routerLink="" id="navbar-brand">rEad iT</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" (click)="onCollapse()"
+            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse  justify-content-end align-items-center " [ngbCollapse]="collapse"
+            id="navbarNav">
+            <ul class="navbar-nav gap-3 px-3 align-items-center">
+                <li class="nav-item">
+                    <div class="container-fluid">
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" id="navbar-search" type="submit">Search</button>
+                        </form>
+                    </div>
+                </li>
+                <li *ngIf="isHome && !isAuthenticated" class="nav-item">
+                    <button type="button" class="btn btn-outline-success" id="signin" (click)="signin()">
+                        Sign-in
+                    </button>
+                </li>
+                <li *ngIf="isHome && !isAuthenticated" class="nav-item">
+                    <button type="button" class="btn btn-outline-success" id="signup" (click)="signup()">
+                        Sign-up
+                    </button>
+                </li>
+                <li *ngIf="isAuthenticated" class="nav-item">
+                    <span class="lead fw-bold" id="Welcome">Welcome {{displayName}}</span>
+                </li>
+                <li *ngIf="isAuthenticated" class="nav-item">
+                    <button type="button" class="btn btn-outline-success" id="logout" (click)="logout()">
+                        Log-out
+                    </button>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>

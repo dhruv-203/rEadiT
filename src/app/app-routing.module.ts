@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthComponentComponent } from './authentication/auth-component.component';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { HomeComponent } from './home/home.component';
+import { DetailedBookPageComponent } from './home/components/detailed-book-page/detailed-book-page.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: "",
     component: HomeComponent
+  },
+  {
+    path: "books/:olid",
+    component: DetailedBookPageComponent
   }
 ];
 

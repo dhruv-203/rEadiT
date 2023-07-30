@@ -1,1 +1,21 @@
-<p>home works!</p>
+<app-header *ngIf="!loader"></app-header>
+<app-loader *ngIf="loader"></app-loader>
+<div *ngIf="!loader" class="container-fluid" id="root">
+    <div class="container d-flex align-items-center justify-content-center flex-wrap gap-2 p-3" id="cardContainer">
+        <div *ngFor="let book of tmp"
+            class="cardBody d-flex align-items-center justify-content-center gap-2 p-3 flex-wrap flex-sm-nowrap"
+            id={{book.id}} (click)="handleBookClick($event)" >
+            <div class="photoContainer p-3 col-sm-6 col-12 d-flex justify-content-center align-items-center">
+                <img srcset={{book.url}} class="img-fluid rounded-top " alt="">
+            </div>
+            <div class="Book Information d-flex col-12 col-sm-6 flex-wrap align-items-center ">
+                <div class="infoBody text-start">
+                    <div class="bookTitle fw-bolder fs-5 ">{{book.title}}</div>
+                    <div class="bookAuthor text-black fw-medium text-wrap"><span class="text-muted">by</span>
+                        {{book.author_name}}
+                    </div>
+                    <div class="bookPublished text-muted">First published in {{book.first_publish_year}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
